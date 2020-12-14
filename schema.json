@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "nb_joueurs": {
-      "type": "string"
+      "type": "integer"
     },
     "variantes": {
       "type": "array",
@@ -270,7 +270,7 @@
               "type": "string"
             },
             "nb_cartes": {
-              "type": "string"
+              "type": "integer"
             }
           },
           "required": [
@@ -285,7 +285,7 @@
               "type": "string"
             },
             "nb_points_min": {
-              "type": "string"
+              "type": "integer"
             },
             "gagant": {
               "type": "string"

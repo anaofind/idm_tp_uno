@@ -1,5 +1,5 @@
 {
-  "nb_joueurs": "2",
+  "nb_joueurs": 2,
   "variantes": [
     "base",
     "equipe"
@@ -75,11 +75,11 @@
     },
     "fin_manche": {
       "joueur": "joueur_existe",
-      "nb_cartes": "0"
+      "nb_cartes": 0
     },
     "fin_partie": {
       "participant": "participant_existe",
-      "nb_points_min": "500",
+      "nb_points_min": 500,
       "gagant" : "participant_min_points"
     }
   }
