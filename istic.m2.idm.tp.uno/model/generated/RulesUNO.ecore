@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rulesUNO" nsURI="http://www.xtext.org/example/mydsl/RulesUNO"
+    nsPrefix="rulesUNO">
+  <eClassifiers xsi:type="ecore:EClass" name="Uno">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nbJoueur" eType="#//NbJoueur"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participantType" eType="#//ParticipantType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variantes" eType="#//Variantes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="regles" eType="#//Regles"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParticipantType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NbJoueur">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variantes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variantes" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Regles">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Affectation" eSuperTypes="#//Declaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribut" eType="#//Attribut"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//ExpressionNumerique"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instruction" eSuperTypes="#//Declaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InstructionsBloc" eSuperTypes="#//Instruction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InstructionChoix" eSuperTypes="#//InstructionsBloc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instructions" upperBound="-1"
+        eType="#//Instruction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableNumerique">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//Attribut"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableBooleene">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="var" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionNumerique">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" upperBound="-1" eType="#//Entier"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBooleene" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" upperBound="-1" eType="#//BooleanContraire"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="log" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarationAlors" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarationSinon" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="att" eType="#//VariableNumerique"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Booleen" eSuperTypes="#//BooleanContraire">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//VariableBooleene"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp1" eType="#//ExpressionNumerique"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp2" eType="#//ExpressionNumerique"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanContraire"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//Declaration"/>
+</ecore:EPackage>

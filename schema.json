@@ -1,0 +1,324 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "nb_joueurs": {
+      "type": "string"
+    },
+    "variantes": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "participant": {
+      "type": "string"
+    },
+    "regles": {
+      "type": "object",
+      "properties": {
+        "crier_uno": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "remarquer_erreur_uno": {
+              "type": "object",
+              "properties": {
+                "joueur": {
+                  "type": "string"
+                },
+                "actions": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "joueur",
+                "actions"
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "remarquer_erreur_uno"
+          ]
+        },
+        "poser_question": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_carte_base": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "choix": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "choix"
+          ]
+        },
+        "jouer_carte_joker": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "choix": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "choix"
+          ]
+        },
+        "jouer_carte_plus_2": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_carte_plus_4": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_carte_inversement_sens": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_carte_passe_ton_tour": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_plusieurs_cartes_identiques": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_carte_zero": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "jouer_suites_de_cartes": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "joueur",
+            "actions"
+          ]
+        },
+        "fin_manche": {
+          "type": "object",
+          "properties": {
+            "joueur": {
+              "type": "string"
+            },
+            "nb_cartes": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "joueur",
+            "nb_cartes"
+          ]
+        },
+        "fin_partie": {
+          "type": "object",
+          "properties": {
+            "participant": {
+              "type": "string"
+            },
+            "nb_points_min": {
+              "type": "string"
+            },
+            "gagant": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "participant",
+            "nb_points_min",
+            "gagant"
+          ]
+        }
+      },
+      "required": [
+        "crier_uno",
+        "poser_question",
+        "jouer_carte_base",
+        "jouer_carte_joker",
+        "jouer_carte_plus_2",
+        "jouer_carte_plus_4",
+        "jouer_carte_inversement_sens",
+        "jouer_carte_passe_ton_tour",
+        "jouer_plusieurs_cartes_identiques",
+        "jouer_carte_zero",
+        "jouer_suites_de_cartes",
+        "fin_manche",
+        "fin_partie"
+      ]
+    }
+  },
+  "required": [
+    "nb_joueurs",
+    "variantes",
+    "participant",
+    "regles"
+  ]
+}

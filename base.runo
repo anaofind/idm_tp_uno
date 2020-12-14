@@ -1,0 +1,8 @@
+RUno {
+	nb_joueur = 5;
+	participant = JOUEUR;
+	
+	variantes {
+		BASE
+	}
+}

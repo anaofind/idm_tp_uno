@@ -1,0 +1,86 @@
+{
+  "nb_joueurs": "2",
+  "variantes": [
+    "base",
+    "equipe"
+  ],
+  "participant": "equipe",
+  "regles": {
+    "crier_uno": {
+      "joueur": "joueur_existe",
+      "remarquer_erreur_uno": {
+        "joueur": "joueur_courrant",
+        "actions": [
+          "piocher_2_cartes"
+        ]
+      }
+    },
+    "poser_question": {
+      "joueur": "joueur_courrant",
+      "actions": [
+        "piocher_2_cartes"
+      ]
+    },
+    "jouer_carte_base": {
+      "joueur": "joueur_courrant",
+      "choix": [
+        "meme_couleur",
+        "meme_numero",
+        "meme_symbole"
+      ]
+    },
+
+    "jouer_carte_joker": {
+      "joueur": "joueur_courrant",
+      "choix": [
+        "choisir_couleur",
+        "changer_couler"
+      ]
+    },
+    "jouer_carte_plus_2": {
+      "joueur": "joueur_suivant",
+      "actions": [
+        "piocher_2_cartes"
+      ]
+    },
+    "jouer_carte_plus_4": {
+      "joueur": "joueur_suivant",
+      "actions": [
+        "piocher_4_cartes"
+      ]
+    },
+    "jouer_carte_inversement_sens": {
+      "joueur": "joueur_courrant",
+      "actions": [
+        "inverser_sens"
+      ]
+    },
+    "jouer_carte_passe_ton_tour": {
+      "joueur": "joueur_suivant",
+      "actions": [
+        "passer_son_tour"
+      ]
+    },
+    "jouer_plusieurs_cartes_identiques": {
+      "joueur": "none",
+      "actions": ["none"]
+    },
+    "jouer_carte_zero": {
+      "joueur": "none",
+      "actions": ["none"]
+    },
+    "jouer_suites_de_cartes": {
+      "joueur": "none",
+      "actions": ["none"]
+    },
+    "fin_manche": {
+      "joueur": "joueur_existe",
+      "nb_cartes": "0"
+    },
+    "fin_partie": {
+      "participant": "participant_existe",
+      "nb_points_min": "500",
+      "gagant" : "participant_min_points"
+    }
+  }
+}

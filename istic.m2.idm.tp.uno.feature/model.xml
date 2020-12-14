@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="UNO">
+			<graphics key="collapsed" value="false"/>
+			<and mandatory="true" name="Regles">
+				<graphics key="collapsed" value="false"/>
+				<and mandatory="true" name="CrierUno">
+					<and mandatory="true" name="Oublie">
+						<and mandatory="true" name="UnJoueurRemarque">
+							<feature mandatory="true" name="PenaliteDeuxCartesSurOublie"/>
+						</and>
+					</and>
+				</and>
+				<and name="PoserUneQuestion">
+					<feature mandatory="true" name="PiocheDeuxCartesSurQuestion"/>
+				</and>
+				<and mandatory="true" name="Obligatoire">
+					<and mandatory="true" name="JouerCarte">
+						<graphics key="collapsed" value="false"/>
+						<feature mandatory="true" name="MemeSymbole"/>
+						<feature mandatory="true" name="MemeCouleur"/>
+						<feature mandatory="true" name="MemeNumero"/>
+						<and mandatory="true" name="Speciale">
+							<and mandatory="true" name="Joker">
+								<feature mandatory="true" name="ChangerCouleur"/>
+								<feature mandatory="true" name="ChoisirCouleur"/>
+							</and>
+							<and mandatory="true" name="Plus2">
+								<feature mandatory="true" name="JoueurSuivantPioche2Cartes"/>
+							</and>
+							<and mandatory="true" name="Plus4">
+								<feature mandatory="true" name="JoueurSuivantPioche4Cartes"/>
+							</and>
+							<and mandatory="true" name="InversementSens">
+								<feature name="Rejouer"/>
+							</and>
+							<and mandatory="true" name="PasseTonTour">
+								<feature mandatory="true" name="JoueurSuivantPasseSonTour"/>
+							</and>
+						</and>
+					</and>
+					<and name="JouerSuiteDeCartes">
+						<feature mandatory="true" name="SuiteDeMemeCouleur"/>
+						<feature mandatory="true" name="SuiteDeMemeNumero"/>
+					</and>
+					<feature name="JouerPlusieursCartesIdentiques"/>
+					<alt name="JouerCarteZero">
+						<feature name="EchangerJeuAvecUnAdversaire"/>
+						<feature name="ChaqueJoueursDonnentLeursCartesAuxJoueurJouantAprèsEux"/>
+					</alt>
+				</and>
+			</and>
+			<and mandatory="true" name="Variantes">
+				<feature mandatory="true" name="Base"/>
+				<feature name="VariantesDeuxJoueurs"/>
+				<feature name="VarianteUnoChallenge"/>
+				<feature name="VarianteEquipe"/>
+				<feature name="VarianteCartesIdentiques"/>
+				<feature name="VarianteSuites"/>
+				<feature name="VarianteZeroEchange"/>
+				<feature name="VarianteZeroTournant"/>
+				<feature name="VarianteZeroQuestion"/>
+			</and>
+			<alt mandatory="true" name="NbJoueurs">
+				<feature name="Deux"/>
+				<feature name="Trois"/>
+				<feature name="Quatre"/>
+				<feature name="Cinq"/>
+				<feature name="Six"/>
+				<feature name="Sept"/>
+				<feature name="Huight"/>
+				<feature name="Neuf"/>
+				<feature name="Dix"/>
+			</alt>
+			<alt mandatory="true" name="Participant">
+				<feature name="Equipe"/>
+				<feature name="Joueur"/>
+			</alt>
+			<and mandatory="true" name="Manche">
+				<graphics key="collapsed" value="false"/>
+				<and mandatory="true" name="Etat">
+					<and mandatory="true" name="UnJoueurAucuneCarte">
+						<and mandatory="true" name="FinManche">
+							<graphics key="collapsed" value="false"/>
+							<and mandatory="true" name="ComptePoints">
+								<graphics key="collapsed" value="false"/>
+								<alt mandatory="true" name="EqSup500">
+									<feature name="ParticipantAyantLeMoinsDePointGagne"/>
+									<and name="ParticipantElimine">
+										<graphics key="collapsed" value="false"/>
+										<and mandatory="true" name="ResteUnJoueurEquipe">
+											<feature mandatory="true" name="ParticipantRestantGagne"/>
+										</and>
+									</and>
+								</alt>
+								<and mandatory="true" name="Inf500">
+									<feature mandatory="true" name="NouvelleManche"/>
+								</and>
+							</and>
+						</and>
+					</and>
+				</and>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>VariantesDeuxJoueurs</var>
+				<var>Deux</var>
+			</imp>
+		</rule>
+		<rule>
+			<eq>
+				<var>VariantesDeuxJoueurs</var>
+				<var>Rejouer</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>ParticipantElimine</var>
+				<var>VarianteUnoChallenge</var>
+			</eq>
+		</rule>
+		<rule>
+			<imp>
+				<var>VarianteEquipe</var>
+				<disj>
+					<var>Deux</var>
+					<disj>
+						<var>Quatre</var>
+						<disj>
+							<var>Six</var>
+							<disj>
+								<var>Huight</var>
+								<var>Dix</var>
+							</disj>
+						</disj>
+					</disj>
+				</disj>
+			</imp>
+		</rule>
+		<rule>
+			<eq>
+				<var>JouerPlusieursCartesIdentiques</var>
+				<var>VarianteCartesIdentiques</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>EchangerJeuAvecUnAdversaire</var>
+				<var>VarianteZeroEchange</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>ChaqueJoueursDonnentLeursCartesAuxJoueurJouantAprèsEux</var>
+				<var>VarianteZeroTournant</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>PiocheDeuxCartesSurQuestion</var>
+				<var>VarianteZeroQuestion</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>Equipe</var>
+				<var>VarianteEquipe</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>JouerSuiteDeCartes</var>
+				<var>VarianteSuites</var>
+			</eq>
+		</rule>
+	</constraints>
+</featureModel>

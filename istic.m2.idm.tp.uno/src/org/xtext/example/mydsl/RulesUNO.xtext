@@ -1,0 +1,162 @@
+grammar org.xtext.example.mydsl.RulesUNO with org.eclipse.xtext.common.Terminals
+
+generate rulesUNO "http://www.xtext.org/example/mydsl/RulesUNO"
+
+Uno:
+	'RUno' '{' nbJoueur=NbJoueur participantType=ParticipantType variantes=Variantes (regles=Regles)? '}'
+;
+
+
+ParticipantType : 
+	'participant' '=' id=('EQUIPE'|'JOUEUR') ';'
+;
+
+NbJoueur:
+	'nb_joueur' '=' val=INT ';'
+;
+
+Variantes : 
+	{Variantes} 'variantes' '{' (variantes+=Variante (',' variantes+=Variante)*)? '}'
+;
+
+Declaration :
+	Instruction | Condition | Affectation 
+;
+
+Regles :
+	{Regles} 'regles' '{' declarations+=Declaration* '}'
+;
+
+
+Affectation :
+	attribut=Attribut '=' expression=ExpressionNumerique ';'	 
+;
+
+Instruction :
+	(InstructionsBloc  | Action ';') 
+;
+
+InstructionsBloc :
+	(InstructionChoix)
+;
+
+InstructionChoix :
+	'choix' '{' instructions+=Instruction (instructions+=Instruction)* '}'
+;
+
+VariableNumerique :
+	var=Attribut
+;
+
+VariableBooleene :
+	var=Variante | action = Action
+;
+
+Variante: 
+	('BASE' | 'DEUX_JOUEURS' | 'UNO_CHALENGE' | 'EQUIPE' | 'CARTES_IDENTIQUES' | 'SUITES' | 'ZERO_ECHANGE' | 'ZERO_TOURNANT' | 'ZERO_QUESTION')
+;
+
+Manche :
+	'MANCHE'
+;
+
+AttributManche  :
+	'NB_JOUEUR' | 'NB_PARTICIPANT'
+;
+
+ActionManche :
+	('FINIR' |'NOUVELLE')
+;
+
+Joueur :
+	('JOUEUR_COURRANT' | 'JOUEUR_SUIVANT' | 'JOUEUR_TOUS' | 'JOUEUR_AUTRE' | 'JOUEUR_EXISTE' | 'JOUEUR_SELECTIONNE')
+;
+
+ActionJoueur :
+	'CRIER_UNO' | 
+	'JOUER_CARTE_BASE' | 
+	'JOUER_CARTE_JOKER' |
+	'JOUER_CARTE_INVERSER_SENS' |
+	'JOUER_CARTE_PASSE_TON_TOUR' |
+	'JOUER_CARTE_PLUS_2' |
+	'JOUER_CARTE_PLUS_4' |
+	'JOUER_PLUSIEURS_CARTES_IDENTIQUES' | 
+    'JOUER_CARTE_ZERO' | 
+    'JOUER_SUITE_DE_CARTES' | 
+    'POSER_QUESTION' | 
+    'REJOUER' | 
+    'PASSER_SON_TOUR' |
+    'CHANGER_COULEUR' | 
+    'CHOISIR_COULEUR' | 
+    'PIOCHER_2_CARTES' | 
+    'PIOCHER_4_CARTES' |
+	'INVERSER_SENS' | 
+	'DONNER_CARTES_AU_JOUEUR_SUIVANT' | 
+	'ECHANGER_JEU_AVEC_UN_ADVERSAIRE' | 
+	'REMARQUER_ERREUR_UNO'
+;
+
+AttributJoueur : 
+	('NB_CARTES')
+;
+
+Participant :
+	('PARTICIPANT_COURRANT' | 'PARTICIPANT_EXISTE' | 'PARTICIPANT_SELECTIONNE' | 'PARTICIPANT_MIN_POINTS')
+;
+
+ActionParticipant : 
+	'GAGNER' | 'PERDRE' | 'ETRE_ELIMINE'
+;
+
+AttributParticipant : 
+	('POINTS')
+;
+
+Action :
+	id=Joueur '.' action=ActionJoueur '()'|
+	id=Manche '.' action=ActionManche '()' |
+	id=Participant '.' action=ActionParticipant '()'
+;
+
+Attribut :
+	id=Joueur '.' attribut=AttributJoueur |
+	id=Manche '.' attribut=AttributManche |
+	id=Participant '.' attribut=AttributParticipant
+;
+
+Operateur:
+	('+' | '-' | '%')
+;
+
+Comparateur :
+	('>' | '<' | '>=' | '<=' | '==' | '!=')
+;
+
+Logique : 
+	('&&' | '||' | '->' | '<->')
+;
+
+ExpressionNumerique :
+	exp+=Entier (op+=Operateur exp+=Entier)*
+;
+
+ExpressionBooleene :
+	exp+=(Booleen|BooleanContraire) (log+=Logique exp+=(Booleen|BooleanContraire))*
+;
+
+Entier :
+	(val=INT | att=VariableNumerique)
+;
+
+Booleen :
+	val=('true' | 'false') | var=VariableBooleene | (exp1=ExpressionNumerique comp=Comparateur exp2=ExpressionNumerique)
+;
+
+BooleanContraire :
+	'!' Booleen
+;
+
+Condition :
+	'if' '(' ExpressionBooleene ')' '{' (declarationAlors+=Declaration)* '}' ('else' '{' (declarationSinon+=Declaration)* '}')?
+;
+

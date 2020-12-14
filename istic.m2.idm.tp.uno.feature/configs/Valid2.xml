@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="UNO"/>
+	<feature automatic="selected" name="Regles"/>
+	<feature automatic="selected" name="CrierUno"/>
+	<feature automatic="selected" name="Oublie"/>
+	<feature automatic="selected" name="UnJoueurRemarque"/>
+	<feature automatic="selected" name="PenaliteDeuxCartesSurOublie"/>
+	<feature manual="selected" name="PoserUneQuestion"/>
+	<feature automatic="selected" name="PiocheDeuxCartesSurQuestion"/>
+	<feature automatic="selected" name="Obligatoire"/>
+	<feature automatic="selected" name="JouerCarte"/>
+	<feature automatic="selected" name="MemeSymbole"/>
+	<feature automatic="selected" name="MemeCouleur"/>
+	<feature automatic="selected" name="MemeNumero"/>
+	<feature automatic="selected" name="Speciale"/>
+	<feature automatic="selected" name="Joker"/>
+	<feature automatic="selected" name="ChangerCouleur"/>
+	<feature automatic="selected" name="ChoisirCouleur"/>
+	<feature automatic="selected" name="Plus2"/>
+	<feature automatic="selected" name="JoueurSuivantPioche2Cartes"/>
+	<feature automatic="selected" name="Plus4"/>
+	<feature automatic="selected" name="JoueurSuivantPioche4Cartes"/>
+	<feature automatic="selected" name="InversementSens"/>
+	<feature automatic="unselected" name="Rejouer"/>
+	<feature automatic="selected" name="PasseTonTour"/>
+	<feature automatic="selected" name="JoueurSuivantPasseSonTour"/>
+	<feature name="JouerSuiteDeCartes"/>
+	<feature name="SuiteDeMemeCouleur"/>
+	<feature name="SuiteDeMemeNumero"/>
+	<feature name="JouerPlusieursCartesIdentiques"/>
+	<feature automatic="selected" name="JouerCarteZero"/>
+	<feature automatic="selected" name="EchangerJeuAvecUnAdversaire"/>
+	<feature automatic="unselected" name="ChaqueJoueursDonnentLeursCartesAuxJoueurJouantAprèsEux"/>
+	<feature automatic="selected" name="Variantes"/>
+	<feature automatic="selected" name="Base"/>
+	<feature automatic="unselected" name="VariantesDeuxJoueurs"/>
+	<feature automatic="unselected" name="VarianteUnoChallenge"/>
+	<feature automatic="unselected" name="VarianteEquipe"/>
+	<feature name="VarianteCartesIdentiques"/>
+	<feature name="VarianteSuites"/>
+	<feature manual="selected" name="VarianteZeroEchange"/>
+	<feature automatic="unselected" name="VarianteZeroTournant"/>
+	<feature automatic="selected" name="VarianteZeroQuestion"/>
+	<feature automatic="selected" name="NbJoueurs"/>
+	<feature automatic="unselected" name="Deux"/>
+	<feature automatic="unselected" name="Trois"/>
+	<feature automatic="unselected" name="Quatre"/>
+	<feature manual="selected" name="Cinq"/>
+	<feature automatic="unselected" name="Six"/>
+	<feature automatic="unselected" name="Sept"/>
+	<feature automatic="unselected" name="Huight"/>
+	<feature automatic="unselected" name="Neuf"/>
+	<feature automatic="unselected" name="Dix"/>
+	<feature automatic="selected" name="Participant"/>
+	<feature automatic="unselected" name="Equipe"/>
+	<feature automatic="selected" name="Joueur"/>
+	<feature automatic="selected" name="Manche"/>
+	<feature automatic="selected" name="Etat"/>
+	<feature automatic="selected" name="UnJoueurAucuneCarte"/>
+	<feature automatic="selected" name="FinManche"/>
+	<feature automatic="selected" name="ComptePoints"/>
+	<feature automatic="selected" name="EqSup500"/>
+	<feature manual="selected" name="ParticipantAyantLeMoinsDePointGagne"/>
+	<feature automatic="unselected" name="ParticipantElimine"/>
+	<feature automatic="unselected" name="ResteUnJoueurEquipe"/>
+	<feature automatic="unselected" name="ParticipantRestantGagne"/>
+	<feature automatic="selected" name="Inf500"/>
+	<feature automatic="selected" name="NouvelleManche"/>
+</configuration>
